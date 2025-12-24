@@ -162,13 +162,13 @@
         (function(){
             try {
                 const params = new URLSearchParams(location.search);
-                // Only redirect to first.html when the user landed on the site root or index page
-                // and there's no explicit bypass parameter `noRedirect`.
-                if (!params.has('noRedirect') && (location.pathname === '/' || location.pathname.endsWith('index.html'))) {
-                    window.location.replace('first.html');
-                }
+                // If explicit bypass present, don't redirect
+                if (params.has('noRedirect')) return;
+                // If already on first.html, don't redirect
+                if (location.href && location.href.endsWith('first.html')) return;
+                // Otherwise forward to first.html
+                window.location.replace('first.html');
             } catch (e) {
-                // If anything goes wrong, don't block the page
                 console.error(e);
             }
         })();
