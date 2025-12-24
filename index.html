@@ -158,10 +158,26 @@
             margin-top: 8px;
         }
     </style>
+    <script>
+        (function(){
+            try {
+                const params = new URLSearchParams(location.search);
+                // Only redirect to first.html when the user landed on the site root or index page
+                // and there's no explicit bypass parameter `noRedirect`.
+                if (!params.has('noRedirect') && (location.pathname === '/' || location.pathname.endsWith('index.html'))) {
+                    window.location.replace('first.html');
+                }
+            } catch (e) {
+                // If anything goes wrong, don't block the page
+                console.error(e);
+            }
+        })();
+    </script>
 </head>
 <body style="background: #ffe4ec;">
     <div class="container" style="background:#ff9800;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:32px 24px 24px 24px;max-width:500px;margin:40px auto;">
-    <h1 style="color:#fff;"><span class="shiny-title">Aminul's Wedding Ceremony</span></h1>
+    <h1 style="color:#fff;"><span class="shiny-title">Wedding Ceremony</span></h1>
+    <h2>Note: This section is for individual use only. Each user can only see their own data and data will be saved if no removed</h2>
         <p style="color:#fff;">Invite your guests and keep track of everyone you invite!</p>
     <div class="section-note section-note-white">
         (এইখানে আপনি বিয়েতে কত জন মানুষ দাওয়াত দিবেন তার তালিকা করে রাখতে পারেন আপনার বুঝার জন্য যে কত জনের আয়জন হবে এবং কত জন আপনি দাওয়াত করেছেন।)

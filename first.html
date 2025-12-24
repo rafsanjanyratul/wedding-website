@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aminul's Weeding</title>
+    <title>Friend's Weeding</title>
     <style>
         .shiny-name {
             position: relative;
             display: inline-block;
-            color: #fff;
+            color: #ffd6ec;
             z-index: 1;
             overflow: hidden;
         }
@@ -18,7 +18,7 @@
             top: 0; left: -60%;
             width: 60%;
             height: 100%;
-            background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 40%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.25) 60%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(120deg, rgba(255,214,236,0) 0%, rgba(255,182,204,0.25) 40%, rgba(255,214,236,0.9) 50%, rgba(255,182,204,0.25) 60%, rgba(255,214,236,0) 100%);
             filter: blur(2px);
             transform: skewX(-20deg);
             animation: white-shine 2.2s linear infinite;
@@ -31,21 +31,24 @@
         body {
             margin: 0;
             padding: 0;
-            background: #fff0f6;
+            background: #0b1020;
+            color: #f6f6fb;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
         .header {
-            background: lightpink;
+            background: linear-gradient(180deg, #12051a 0%, #1b0b22 100%);
             padding: 40px 0 30px 0;
             text-align: center;
             position: relative;
+            box-shadow: inset 0 -2px 30px rgba(0,0,0,0.6);
         }
         .header h1 {
             margin: 0;
-            font-size: 2.5rem;
-            color: #fff;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 2.2rem;
+            color: #ffd6ec;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
         .love-symbol {
             position: fixed;
@@ -55,6 +58,7 @@
             align-items: flex-start;
             pointer-events: none;
             z-index: 0;
+            opacity: 0.12;
         }
         .love-symbol-inner {
             width: 25vw;
@@ -63,99 +67,110 @@
             justify-content: center;
             align-items: center;
         }
-        .love-symbol svg {
-            width: 100%;
-            height: 100%;
-            max-width: 300px;
-            max-height: 300px;
-        }
+        .love-symbol svg { filter: hue-rotate(-10deg) saturate(1.2); }
         .invitation-lines, .header > div[style*="max-width:340px"] {
             position: relative;
             z-index: 1;
         }
+        .invitation-lines div:nth-child(1) { font-size:1.3rem; color:#ffd6ec; }
+        .invitation-lines div:nth-child(3) { font-size:2.4rem; color:#ffd6ec; }
         @media (max-width: 900px) {
-            .love-symbol-inner {
-                width: 35vw;
-                height: 35vw;
-                min-width: 120px;
-                min-height: 120px;
-            }
-            .love-symbol svg {
-                max-width: 180px;
-                max-height: 180px;
-            }
+            .love-symbol-inner { width: 35vw; height: 35vw; min-width: 120px; min-height: 120px; }
+            .love-symbol svg { max-width: 180px; max-height: 180px; }
         }
         @media (max-width: 600px) {
-            .header {
-                padding: 24px 0 18px 0;
-            }
-            .header h1 {
-                font-size: 1.3rem;
-            }
-            .invitation-lines div:nth-child(1) {
-                font-size: 1rem !important;
-            }
-            .invitation-lines div:nth-child(3) {
-                font-size: 1.3rem !important;
-            }
-            .love-symbol-inner {
-                width: 40vw;
-                height: 24vw;
-                min-width: 70px;
-                min-height: 70px;
-            }
-            .love-symbol svg {
-                max-width: 90px;
-                max-height: 90px;
-            }
-            .header > div[style*="max-width:340px"] {
-                max-width: 98vw !important;
-                padding-left: 2vw;
-                padding-right: 2vw;
-            }
+            .header { padding: 24px 0 18px 0; }
+            .header h1 { font-size: 1.5 rem; }
+            .invitation-lines div:nth-child(1) { font-size: 1rem !important; }
+            .invitation-lines div:nth-child(3) { font-size: 1.3rem !important; }
+            .love-symbol-inner { width: 40vw; height: 24vw; min-width: 70px; min-height: 70px; }
+            .love-symbol svg { max-width: 90px; max-height: 90px; }
+            .header > div[style*="max-width:340px"] { max-width: 98vw !important; padding-left: 2vw; padding-right: 2vw; }
         }
+        /* Card boxes inside header */
+        .header .card { background: #FFFFFF; border-radius: 12px; box-shadow: 0 2px 12px rgba(255,182,204,0.04); padding: 22px 0; text-align: center; }
+        /* make the inner date/when boxes white with rounded corners */
+        .header .card .date,
+        .header .card .when {
+            display: inline-block;
+            background: #ffffff;
+            padding: 8px 14px;
+            border-radius: 10px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+        }
+        .header .card .date { font-size:1.4rem; font-weight:800; margin-bottom:6px; }
+        .header .card .when { font-size:1.05rem; font-weight:600; }
+        /* gradient text inside those white boxes */
+        .grad-text {
+            background: linear-gradient(90deg,#ff4da6 0%, #ffb6dd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            line-height: 1;
+        }
+        .venue-title { font-size:1.1rem; color:#ffb6dd; font-weight:600; }
+        .venue-name { font-size:1.2rem; color:#ffd6ec; font-weight:700; }
+        .venue-loc { font-size:1rem; color:#ffd6ec; font-weight:500; }
+        /* CTA button */
+        .cta-btn {
+            background: linear-gradient(90deg,#ff4da6 0%, #ffb6dd 100%);
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 14px 38px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(255,90,150,0.12);
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,90,150,0.18); }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Aminul &amp; Tanha's Wedding</h1>
+        <h1>Shovon &amp; Bushra's Wedding</h1>
+        <h1>Tasin &amp; Tumpa's Wedding</h1>
         <div class="invitation-lines" style="margin-top:32px;">
             <div style="font-size:1.3rem;letter-spacing:1px;color:#fff;font-weight:500;">PLEASE JOIN US FOR THE WEEDING OF</div>
             <div style="height:18px;"></div>
             <div style="font-size:2.7rem;font-weight:900;letter-spacing:2px;">
-                <span class="shiny-name">AMINUL &amp; TANHA</span>
+                <span class="shiny-name">SHOVON &amp; BUSHRA</span><br>
+                <span class="shiny-name">TASIN &amp; TUMPA</span>
             </div>
         </div>
         <div style="margin:36px auto 0 auto;max-width:340px;">
-            <div style="background:#fff;border-radius:12px;box-shadow:0 2px 12px #eec3d6;padding:22px 0;text-align:center;">
-                <div style="font-size:1.4rem;color:#c2185b;font-weight:700;">3rd October, 2025</div>
+            <div class="card" style="border-radius:12px;padding:22px 0;text-align:center;">
+                <div class="date"><span class="grad-text">27th December, 2025</span></div>
                 <div style="height:10px;"></div>
-                <div style="font-size:1.1rem;color:#c2185b;font-weight:500;">In The Afternoon</div>
+                <div class="when"><span class="grad-text">In The Afternoon</span></div>
             </div>
             <div style="margin-top:22px;text-align:center;">
-                <div style="font-size:1.1rem;color:#c2185b;font-weight:600;">Venue</div>
+                <div class="venue-title">Venue</div>
                 <div style="height:6px;"></div>
-                <div style="font-size:1.2rem;color:#c2185b;font-weight:700;">HOME OF AMINUL</div>
+                <div class="venue-name">HOME OF SHOVON</div>
                 <div style="height:6px;"></div>
-                <div style="font-size:1rem;color:#c2185b;font-weight:500;">zazira, sadhur bazar, keraniganj</div>
+                <div class="venue-loc">zazira, khalpar, keraniganj</div>
+            </div>
+        </div>
+        <div style="margin:36px auto 0 auto;max-width:340px;">
+            <div class="card" style="border-radius:12px;padding:22px 0;text-align:center;">
+                <div class="date"><span class="grad-text">10th January, 2026</span></div>
+                <div style="height:10px;"></div>
+                <div class="when"><span class="grad-text">In The Afternoon</span></div>
+            </div>
+            <div style="margin-top:22px;text-align:center;">
+                <div class="venue-title">Venue</div>
+                <div style="height:6px;"></div>
+                <div class="venue-name">HOME OF TASIN</div>
+                <div style="height:6px;"></div>
+                <div class="venue-loc">zazira, Sadur-bazar, keraniganj</div>
             </div>
         </div>
     </div>
 
-    <div style="width:100%;display:flex;justify-content:center;margin:48px 0 24px 0;">
-        <a href="index.html" style="
-            background: linear-gradient(90deg, #e75480 0%, #f8bbd0 100%);
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 14px 38px;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            box-shadow: 0 2px 12px #eec3d6;
-            letter-spacing: 1px;
-            transition: background 0.2s, box-shadow 0.2s;
-        " onmouseover="this.style.background='#e75480';this.style.boxShadow='0 4px 18px #eec3d6';" onmouseout="this.style.background='linear-gradient(90deg, #e75480 0%, #f8bbd0 100%)';this.style.boxShadow='0 2px 12px #eec3d6';">
+        <div style="width:100%;display:flex;justify-content:center;margin:48px 0 24px 0;">
+        <a class="cta-btn" href="index.html?noRedirect=1" style="display:inline-block;text-align:center;" onmouseover="this.style.boxShadow='0 12px 32px rgba(255,90,150,0.18)';" onmouseout="this.style.boxShadow='0 6px 18px rgba(255,90,150,0.12)';">
             GO TO DO MORE
         </a>
     </div>
